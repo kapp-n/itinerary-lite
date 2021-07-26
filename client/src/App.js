@@ -21,6 +21,23 @@ function App() {
     })
   }, [])
 
+  const onLogin = (u) => {
+    setLoggedIn(true)
+    setUser(u)
+    history.push('/')
+  }
+
+  const logOut = () => {
+    fetch('/logout', {
+      method: "DELETE"
+    })
+    .then(() => {
+      setLoggedIn(false)
+      setUser({})
+      history.push('/')
+    })
+  }
+
 
   return (
     <div className="App">

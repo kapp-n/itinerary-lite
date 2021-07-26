@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Home = () => {
+const Home = (props) => {
     if(props.loggedIn){
         return (
             <div>
-                <h1>Welcome back</h1>
+                <h1>Welcome back, {`${props.user.username}`}</h1>
             </div>
         )
     } else {
