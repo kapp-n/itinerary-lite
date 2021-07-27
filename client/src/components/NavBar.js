@@ -6,7 +6,9 @@ const NavBar = (props) => {
         return (
             <div>
                 <button class="nav" onClick={props.logOut}>Log out</button>
-                <button class="nav">My Trips</button>
+                <Link to='/categories'>
+                    <button class="nav">My Trips</button>
+                </Link>
             </div>
         )
     } else {
