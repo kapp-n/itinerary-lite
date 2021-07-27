@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom'
 import Home from'./components/Home'
+import NavBar from './components/NavBar'
+import Signup  from './containers/Signup'
 import './App.css';
 
 function App() {
@@ -41,8 +43,10 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar onLogin={onLogin} loggedIn={loggedIn} logOut={logOut} />
       <Switch>
         <Route exact path='/' render={routerProps => <Home {...routerProps} loggedIn={loggedIn} user={user} />} />
+        <Route exact path='/signup' render={routerProps => <Signup {...routerProps} onLogin={onLogin} />} />
       </Switch>
       
     </div>
