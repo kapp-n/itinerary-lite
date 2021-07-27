@@ -13,9 +13,11 @@ const NavBar = (props) => {
         return (
             <div>
                 <Link to='/signup'>
-                <button class="nav">Sign Up</button>
+                    <button class="nav">Sign Up</button>
                 </Link>
+                <Link to='/login'>
                     <button class="nav">Login</button>
+                </Link>
             </div>
         )
     }

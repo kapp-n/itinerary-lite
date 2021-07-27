@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router
 import Home from'./components/Home'
 import NavBar from './components/NavBar'
 import Signup  from './containers/Signup'
+import Login from './containers/Login'
 import './App.css';
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
       <Switch>
         <Route exact path='/' render={routerProps => <Home {...routerProps} loggedIn={loggedIn} user={user} />} />
         <Route exact path='/signup' render={routerProps => <Signup {...routerProps} onLogin={onLogin} />} />
+        <Route exact path='/login' render={routerProps => <Login {...routerProps} onLogin={onLogin} />} />
       </Switch>
       
     </div>
