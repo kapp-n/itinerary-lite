@@ -22,6 +22,11 @@ class CategoriesController < ApplicationController
         end
     end
 
+    def all_categories
+        categories = Category.all
+        render json: categories
+    end
+
     def add_category
         user = User.find_by(id: sessions[:user_id])
         category = user.categories.create(category_params)

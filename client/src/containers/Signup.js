@@ -35,10 +35,10 @@ const Signup = ({ onLogin }) => {
 
     return (
         <div class="login">
-            <div class ="errors">
+            <div className="errors">
                 {errors}
             </div>
-        <form onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
 			<label>Username </label>
             <br/>
 			<input 

@@ -33,10 +33,10 @@ const Login = ({ onLogin }) => {
 
     return (
 		<div>
-            <div class ="errors">
+            <div className="errors">
                 {error}
             </div>
-        <form class="login" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
 			<label>Username </label>
             <br/>
 			<input 
