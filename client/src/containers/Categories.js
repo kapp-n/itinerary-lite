@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import CategoryForm from './CategoryForm'
+import Category  from '../components/Category'
 
 const Categories = ({ loggedIn, user }) => {
     const [categories, setCategories] = useState([])
@@ -34,7 +35,7 @@ const Categories = ({ loggedIn, user }) => {
         .then(r => r.json())
         .then(data => {
             console.log(data)
-            if (data.errors){
+            if (data.errors) {
                 const dataErrors = data.errors.map(error => <h2 className="errors">{error}</h2>)
                 setErrors(dataErrors)
             } else {
@@ -43,10 +44,22 @@ const Categories = ({ loggedIn, user }) => {
             } 
         })
     }
+
+    const deleteCategory = (c) => {
+        fetch(`/categories/${c.id}`, {
+            method: "DELETE",
+        })
+        .then(r => {
+            if(r.ok) {
+                const newCategories = categories.filter(category => category.id !== c.id)
+                setCategories(newCategories)
+            }
+        })
+    }
     
     
 
-    const allCategories = categories.map(category => <h2>{category.name}</h2>)
+    const allCategories = categories.map(category => <Category key={category.id} category={category} deleteCategory={deleteCategory} />)
 
     if (error === '') {
         return (
@@ -56,7 +69,7 @@ const Categories = ({ loggedIn, user }) => {
                 {formFlag ?
                         <CategoryForm addCategory={addCategory} errors={errors} />
                         :
-                        <button id="add" onClick={() => setFormFlag(true)}>Add a Category</button>
+                        <button className="button" onClick={() => setFormFlag(true)}>Add a Category</button>
                     }
                 <div>
                     <h1>{user.username}'s trips</h1>

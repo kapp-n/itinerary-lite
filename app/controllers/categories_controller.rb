@@ -13,6 +13,13 @@ class CategoriesController < ApplicationController
         render json: category, include: :trips
     end
 
+    def destroy
+        user = User.find_by(id: session[:user_id])
+        categories = user.categories
+        categories.reject { |c| c[:id] == params[:id] }
+        head :no_content
+    end
+
     def create
         user = User.find_by(id: session[:user_id])
         category = Category.find_by(name: params[:name])
@@ -35,15 +42,7 @@ class CategoriesController < ApplicationController
         render json: categories
     end
 
-    # def add_category
-    #     user = User.find_by(id: sessions[:user_id])
-    #     category = user.categories.create(category_params)
-    #     if category.valid?
-    #         render json: category, status: :created
-    #     else
-    #         render json: { errors: category.errors.full_messages }, status: :unprocessable_entity
-    #     end
-    # end
+   
 
     private
 
