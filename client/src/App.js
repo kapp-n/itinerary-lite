@@ -5,7 +5,6 @@ import NavBar from './components/NavBar'
 import Signup  from './containers/Signup'
 import Login from './containers/Login'
 import Categories from './containers/Categories'
-import CategoryForm from './containers/CategoryForm'
 import './App.css';
 
 function App() {
@@ -52,7 +51,6 @@ function App() {
         <Route exact path='/signup' render={routerProps => <Signup {...routerProps} onLogin={onLogin} />} />
         <Route exact path='/login' render={routerProps => <Login {...routerProps} onLogin={onLogin} />} />
         <Route exact path='/categories' render={routerProps => <Categories {...routerProps} loggedIn={loggedIn} user={user} />} />
-        <Route exact path='/categories/form' render={routerProps => <CategoryForm {...routerProps}  />} />
       </Switch>
       
     </div>
