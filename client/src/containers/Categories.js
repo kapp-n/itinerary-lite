@@ -24,29 +24,10 @@ const Categories = ({ user }) => {
         })
     }, [])
 
-    // const addTrip = (t) => {
-    //     console.log(t, 't')
-    //     fetch('/trips', {
-    //         method: "POST",
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //             trip: t
-    //         })
-    //     })
-    //     .then(r => r.json())
-    //     .then(data => {
-    //         console.log(data)
-    //         if (data.errors) {
-    //             const dataErrors = data.errors.map(error => <h2 className="errors">{error}</h2>)
-    //             setErrors(dataErrors)
-    //         } else {
-    //             setTrips([...trips, data])
-    //             setFormFlag(false)
-    //         } 
-    //     })
-    // }
+    const addTrip = (t) => {
+        setTrips([...trips, t])
+        setTripFormFlag(false)
+    }
 
     const addCategory = (c) => {
         console.log(c, 'c')
@@ -84,7 +65,7 @@ const Categories = ({ user }) => {
     
     
 
-    const allTrips = trips.map(trip => <Category key={trip.id} trip={trip}  />)
+    const allTrips = trips.map(trip => <Category key={trip.id} trip={trip} category={trip.category}  />)
 
     if (error === '') {
         return (
@@ -101,7 +82,7 @@ const Categories = ({ user }) => {
                     <br/>
                     <br/>
                     {tripFormFlag ?
-                        <TripForm  />
+                        <TripForm addTrip={addTrip}  />
                         :
                         <button className="button" onClick={() => setTripFormFlag(true)}>Start planning your new trip!</button>
                     }

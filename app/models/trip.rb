@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
     belongs_to :user 
     belongs_to :category
-    validates :location, presence: :true
+    validates :locale, presence: :true
 end
