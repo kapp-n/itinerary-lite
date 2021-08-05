@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import Signup  from './containers/Signup'
 import Login from './containers/Login'
 import Categories from './containers/Categories'
+import CategoryWithTrips from './containers/CategoryWithTrips'
 import './App.css';
 
 function App() {
@@ -50,7 +51,8 @@ function App() {
         <Route exact path='/' render={routerProps => <Home {...routerProps} loggedIn={loggedIn} user={user} />} />
         <Route exact path='/signup' render={routerProps => <Signup {...routerProps} onLogin={onLogin} />} />
         <Route exact path='/login' render={routerProps => <Login {...routerProps} onLogin={onLogin} />} />
-        <Route exact path='/categories' render={routerProps => <Categories {...routerProps} loggedIn={loggedIn} user={user} />} />
+        <Route exact path='/trips' render={routerProps => <Categories {...routerProps} user={user} />} />
+        <Route path ="/trips/:id" render={routerProps => <CategoryWithTrips {...routerProps} user={user} loggedIn={loggedIn} />} />
       </Switch>
       
     </div>

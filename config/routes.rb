@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
   get "/me", to: "users#show"
   get "/categories/form", to: "categories#all_categories"
-  resources :categories, only: [:index, :show, :create, :destroy] do
-    resources :trips 
-  end 
-  
+  resources :trips
+  resources :categories, except: [:update]
 end

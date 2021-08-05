@@ -1,61 +1,36 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-const CategoryForm = ({ addCategory, errors }) => {
-    const [categories, setCategories] = useState([])
-    const [name, setName] = useState('')
+const CategoryForm = ({ errors, addCategory }) => {
+    const [category, setCategory] = useState('')
 
-   useEffect(() => {
-    fetch('/categories/form')
-    .then(r => r.json())
-    .then(data => {
-         setName(data[0].name)
-         console.log(data, "form")
-         setCategories(data)
-        })
-   }, [])
 
-   const handleSubmit = (e) => {
-       e.preventDefault()
-       console.log(name)
-       addCategory(name)
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        addCategory(category)
+     }
+    
+    
+    const handleChange = (e) => {
+        console.log(e.target.value)
+        setCategory(e.target.value)
+        
     }
-
-
-
-   const handleChange = (e) => {
-       console.log(e.target.value)
-       setName(e.target.value)
-   }
-
-const allCategories = categories.map(c => <option value={c.name}>{c.name}</option>)
-
 
     return (
         <div>
-            <h3>New Trip Category Form</h3>
-            <div className="form">
-                <p>select from existing categories</p>
-                {errors}
-                <form id="exists" onSubmit={handleSubmit}>
-                    <select id="categories" onChange={handleChange}>
-                        {allCategories}
-                    </select>
-                    <input type="submit" />
-                </form>
-                <p>or name your own:</p>
+            {errors}
                 <form onSubmit={handleSubmit}>
-                    <label>Category:</label>
+                    <p>Add new category:</p>
                     <input 
-                        type="text" 
-                        name="name"
+                        type="text"
+                        name="category"
                         onChange={handleChange}
                     />
-                    <input type= "submit" />
+                    <input type="submit" />
                 </form>
-            </div>
         </div>
-    )
+    )   
 }
-
 
 export default CategoryForm

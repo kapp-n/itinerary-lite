@@ -21,19 +21,11 @@ class CategoriesController < ApplicationController
     end
 
     def create
-        user = User.find_by(id: session[:user_id])
-        category = Category.find_by(name: params[:name])
-        if category 
-            user.categories << category
+        category = Category.create(category_params)
+        if category.valid?
             render json: category, status: :created
         else
-            new_category = Category.create(category_params)
-            if new_category.valid?
-                user.categories << new_category
-                render json: new_category, status: :created
-            else
-                render json: { errors: category.errors.full_messages }, status: :unprocessable_entity
-            end
+            render json: { errors: "There was an issue with your request, please make sure your category doesn't already exist when creating a trip" }, status: :unprocessable_entity
         end
     end
 
@@ -47,7 +39,7 @@ class CategoriesController < ApplicationController
     private
 
     def category_params
-        params.permit(:name)
+        params.permit(:category, :cname)
     end
 
     def authorize

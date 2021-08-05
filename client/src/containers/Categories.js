@@ -1,79 +1,111 @@
 import React, { useState, useEffect } from 'react'
 import CategoryForm from './CategoryForm'
 import Category  from '../components/Category'
+import TripForm from './TripForm'
 
-const Categories = ({ loggedIn, user }) => {
-    const [categories, setCategories] = useState([])
+const Categories = ({ user }) => {
+    const [trips, setTrips] = useState([])
     const [error, setError] = useState("")
     const [errors, setErrors] = useState([])
-    const [formFlag, setFormFlag] = useState(false)
+    const [categoryFormFlag, setCategoryFormFlag] = useState(false)
+    const [tripFormFlag, setTripFormFlag] = useState(false)
     
 
     useEffect(() => {
-        fetch('/categories')
+        fetch('/trips')
         .then(r => r.json())
         .then(data =>{
-            console.log(data, "categories")
+            console.log(data)
             if(data.error){
                 setError(data.error)
             } else {
-                setCategories(data)
+                setTrips(data)
             }
         })
     }, [])
 
+    // const addTrip = (t) => {
+    //     console.log(t, 't')
+    //     fetch('/trips', {
+    //         method: "POST",
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({
+    //             trip: t
+    //         })
+    //     })
+    //     .then(r => r.json())
+    //     .then(data => {
+    //         console.log(data)
+    //         if (data.errors) {
+    //             const dataErrors = data.errors.map(error => <h2 className="errors">{error}</h2>)
+    //             setErrors(dataErrors)
+    //         } else {
+    //             setTrips([...trips, data])
+    //             setFormFlag(false)
+    //         } 
+    //     })
+    // }
+
     const addCategory = (c) => {
+        console.log(c, 'c')
         fetch('/categories', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: c
+                cname: c
             })
         })
         .then(r => r.json())
         .then(data => {
             console.log(data)
             if (data.errors) {
-                const dataErrors = data.errors.map(error => <h2 className="errors">{error}</h2>)
-                setErrors(dataErrors)
+                setErrors(data.errors)
             } else {
-                setCategories([...categories, data])
-                setFormFlag(false)
+                setCategoryFormFlag(false)
             } 
         })
     }
 
-    const deleteCategory = (c) => {
-        fetch(`/categories/${c.id}`, {
-            method: "DELETE",
-        })
-        .then(r => {
-            if(r.ok) {
-                const newCategories = categories.filter(category => category.id !== c.id)
-                setCategories(newCategories)
-            }
-        })
-    }
+    // const deleteCategory = (c) => {
+    //     fetch(`/categories/${c.id}`, {
+    //         method: "DELETE",
+    //     })
+    //     .then(r => {
+    //         if(r.ok) {
+    //             const newCategories = categories.filter(category => category.id !== c.id)
+    //             setCategories(newCategories)
+    //         }
+    //     })
+    // }
     
     
 
-    const allCategories = categories.map(category => <Category key={category.id} category={category} deleteCategory={deleteCategory} />)
+    const allTrips = trips.map(trip => <Category key={trip.id} trip={trip}  />)
 
     if (error === '') {
         return (
             <div>
                 <br/>
                 <br/>
-                {formFlag ?
-                        <CategoryForm addCategory={addCategory} errors={errors} />
-                        :
-                        <button className="button" onClick={() => setFormFlag(true)}>Add a Category</button>
-                    }
                 <div>
                     <h1>{user.username}'s trips</h1>
-                    {allCategories}
+                    {categoryFormFlag ?
+                        <CategoryForm addCategory={addCategory} errors={errors} />
+                        :
+                        <button className="button" onClick={() => setCategoryFormFlag(true)}>Add a Category</button>
+                    }
+                    <br/>
+                    <br/>
+                    {tripFormFlag ?
+                        <TripForm  />
+                        :
+                        <button className="button" onClick={() => setTripFormFlag(true)}>Start planning your new trip!</button>
+                    }
+                    {allTrips}
                 </div>
             </div>
         )
@@ -85,3 +117,4 @@ const Categories = ({ loggedIn, user }) => {
 }
 
 export default Categories
+
