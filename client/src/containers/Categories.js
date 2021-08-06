@@ -3,7 +3,8 @@ import CategoryForm from './CategoryForm'
 import Trip  from '../components/Trip'
 import TripForm from './TripForm'
 
-const Categories = ({ user }) => {
+
+const Categories = ({ user, onAdd }) => {
     const [trips, setTrips] = useState([])
     const [error, setError] = useState("")
     const [errors, setErrors] = useState([])
@@ -70,11 +71,11 @@ const Categories = ({ user }) => {
 
     if (error === '') {
         return (
-            <div>
+            <div className="trip_page">
                 <br/>
                 <br/>
                 <div>
-                    <h1>{user.username}'s trips</h1>
+                    <h1 id="username">{user.username}'s trips</h1>
                     {categoryFormFlag ?
                         <CategoryForm addCategory={addCategory} errors={errors} />
                         :
@@ -87,6 +88,7 @@ const Categories = ({ user }) => {
                         :
                         <button className="button" onClick={() => setTripFormFlag(true)}>Start planning your new trip!</button>
                     }
+                    <hr id="trip_hr"/>
                     {allTrips}
                 </div>
             </div>
@@ -99,4 +101,3 @@ const Categories = ({ user }) => {
 }
 
 export default Categories
-

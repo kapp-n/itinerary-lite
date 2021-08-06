@@ -10,15 +10,17 @@ class TripsController < ApplicationController
     def show
         user = User.find_by(id: session[:user_id])
         trip = user.trips.find_by(id: params[:id])
-        render json: trip, include: :category
+        if trip
+            render json: trip, include: :category
+        else
+            render json: { error: "Trip not found" }, status: :not_found
+        end
     end
 
     def create
         trip = Trip.create(trip_params)
         user = User.find_by(id: session[:user_id])
         user.trips << trip
-        #category = Category.find_by(id: trip_params[:category_id])
-        #trip.category_id == category.id
         if trip.valid?
             render json: :trip, status: :created
         else
@@ -28,7 +30,13 @@ class TripsController < ApplicationController
         
 
     def update
-        
+        trip = Trip.find_by(id: params[:id])
+        if trip
+            trip.update(trip_params)
+            render json: trip
+        else
+            render json: { error: "Trip not found" }, status: :not_found
+        end
     end
 
     def destroy

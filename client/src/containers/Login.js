@@ -36,7 +36,7 @@ const Login = ({ onLogin }) => {
             <div className="errors">
                 {error}
             </div>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="login" onSubmit={handleSubmit}>
 			<label>Username </label>
             <br/>
 			<input 
@@ -57,7 +57,7 @@ const Login = ({ onLogin }) => {
 			/>
 			<br/>
 			<br/>
-			<input type="submit" />
+			<input className="submit" type="submit" />
         </form>
 	</div>
 	)

@@ -1,8 +1,148 @@
+* {
+  background-color: aliceblue;
+}
+
 .App {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: aliceblue;
+}
+
+.login{
   text-align: center;
 }
 
+.error{
+  color: tomato;
+  text-align: center;
+  font-weight: bolder;
+  padding-top: 20px;
+  padding-left: 20px;
+}
 
+.errors{
+  color: tomato;
+  text-align: center;
+  font-weight: bolder;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+
+.nav {
+  border: #41BB92;
+  border-radius: 15px;
+  background-color: #72b4c5;
+  opacity: 90%;
+  color: whitesmoke;
+  width: 100px;
+  height: 30px;
+}
+
+.nav:hover{
+  background-color: orange;
+}
+
+.home {
+  text-align: center;
+  color: orange;
+}
+
+.trip_page{
+  text-align: center;
+  color: orange;
+}
+
+.full_trip{
+  text-align: center;
+  color: orange;
+}
+
+hr {
+  border-style: solid;
+  border-radius: 10px;
+  border-color: orange;
+  border-width: 3px;
+  width: 200px;
+}
+
+
+#trip_card{
+  display: inline-flex;
+  padding: 20px;
+  align-items: center;
+}
+
+#trip_card h5 {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.button {
+  border: #41BB92;
+  border-radius: 15px;
+  background-color: #72b4c5;
+  opacity: 90%;
+  color: whitesmoke;
+  width: 200px;
+  height: 30px;
+}
+
+.button:hover{
+  background-color: orange;
+}
+
+#delete_button{
+  border:none;
+  font-size: 15px;
+  
+}
+
+a{
+  color: orange;
+}
+
+a:hover{
+  color: tomato
+}
+
+form {
+  color: #72b4c5;
+  font-weight: bold;
+}
+
+input {
+  border-radius: 10px;
+  border-style: solid
+}
+
+textarea{
+  border-radius: 10px;
+  border-style: solid
+}
+
+.submit{
+  border: #41BB92;
+  border-radius: 15px;
+  background-color: #72b4c5;
+  opacity: 90%;
+  color: whitesmoke;
+  width: 100px;
+  height: 20px;
+}
+
+.submit:hover{
+  background-color: orange;
+}
+
+#trip_hr {
+  border-style: solid;
+  border-radius: 10px;
+  border-color: orange;
+  border-width: 2px;
+  width: 400px;
+}
 
 .App-header {
   background-color: #282c34;
@@ -15,8 +155,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
+
 
 

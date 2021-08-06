@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import Signup  from './containers/Signup'
 import Login from './containers/Login'
 import Categories from './containers/Categories'
+import FullTrip  from './containers/FullTrip'
 import './App.css';
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
       }
     })
   }, [])
+
+
 
   const onLogin = (u) => {
     setLoggedIn(true)
@@ -51,6 +54,7 @@ function App() {
         <Route exact path='/signup' render={routerProps => <Signup {...routerProps} onLogin={onLogin} />} />
         <Route exact path='/login' render={routerProps => <Login {...routerProps} onLogin={onLogin} />} />
         <Route exact path='/trips' render={routerProps => <Categories {...routerProps} user={user} />} />
+        <Route path='/trips/:id' render={routerProps => <FullTrip {...routerProps} user={user} />} />
       </Switch>
       
     </div>

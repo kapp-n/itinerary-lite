@@ -27,7 +27,7 @@ const CategoryForm = ({ errors, addCategory }) => {
                         name="category"
                         onChange={handleChange}
                     />
-                    <input type="submit" />
+                    <input className="submit" type="submit" />
                 </form>
         </div>
     )   

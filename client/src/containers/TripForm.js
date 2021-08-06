@@ -47,10 +47,10 @@ const TripForm = ({ addTrip }) => {
     const allCategories = categories.map(c => <option value={c.id}>{c.cname}</option>)
 
     return (
-        <div className="form">
-            {/* {this.props.errors} */}
+        <div className="form_box">
+             <h4 className="error">{error}</h4>
             <p>First, enter a location (city, state, etc.) for your trip:</p>
-            <form onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleSubmit}>
                 <label id= "pin">📍 </label>
                 <input 
                     type="text" 
@@ -75,7 +75,7 @@ const TripForm = ({ addTrip }) => {
                 </select>
                 <br/>
                 <br/>
-                <input type="submit" value="Add to Itinerary!" />
+                <input className="submit" type="submit" value="Add to Itinerary!" />
                 </form>
         </div>
     )
