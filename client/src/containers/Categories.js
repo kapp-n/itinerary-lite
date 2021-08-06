@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import CategoryForm from './CategoryForm'
-import Category  from '../components/Category'
+import Trip  from '../components/Trip'
 import TripForm from './TripForm'
 
 const Categories = ({ user }) => {
@@ -20,6 +20,7 @@ const Categories = ({ user }) => {
                 setError(data.error)
             } else {
                 setTrips(data)
+                console.log(trips, "trips")
             }
         })
     }, [])
@@ -51,21 +52,21 @@ const Categories = ({ user }) => {
         })
     }
 
-    // const deleteCategory = (c) => {
-    //     fetch(`/categories/${c.id}`, {
-    //         method: "DELETE",
-    //     })
-    //     .then(r => {
-    //         if(r.ok) {
-    //             const newCategories = categories.filter(category => category.id !== c.id)
-    //             setCategories(newCategories)
-    //         }
-    //     })
-    // }
+    const deleteCategory = (c) => {
+        fetch(`/categories/${c.id}`, {
+            method: "DELETE",
+        })
+        .then(r => {
+            if(r.ok) {
+                const newTrips = trips.filter(trip => trip.category.id !== c.id)
+                setTrips(newTrips)
+            }
+        })
+    }
     
     
 
-    const allTrips = trips.map(trip => <Category key={trip.id} trip={trip} category={trip.category}  />)
+    const allTrips = trips.map(trip => <Trip key={trip.id} deleteCategory={deleteCategory} trip={trip} category={trip.category}  />)
 
     if (error === '') {
         return (

@@ -17,6 +17,8 @@ class CategoriesController < ApplicationController
         user = User.find_by(id: session[:user_id])
         categories = user.categories
         categories.reject { |c| c[:id] == params[:id] }
+        trips = user.trips.find_by(category_id: params[:id])
+        trips.destroy
         head :no_content
     end
 
