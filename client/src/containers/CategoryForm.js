@@ -18,7 +18,7 @@ const CategoryForm = ({ errors, addCategory }) => {
     }
 
     return (
-        <div>
+        <div id="add_cat">
             {errors}
                 <form onSubmit={handleSubmit}>
                     <p>Add new category:</p>

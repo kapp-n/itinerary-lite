@@ -53,7 +53,7 @@ function App() {
         <Route exact path='/' render={routerProps => <Home {...routerProps} loggedIn={loggedIn} user={user} />} />
         <Route exact path='/signup' render={routerProps => <Signup {...routerProps} onLogin={onLogin} />} />
         <Route exact path='/login' render={routerProps => <Login {...routerProps} onLogin={onLogin} />} />
-        <Route exact path='/trips' render={routerProps => <Categories {...routerProps} user={user} />} />
+        <Route exact path='/categories' render={routerProps => <Categories {...routerProps} user={user} />} />
         <Route path='/trips/:id' render={routerProps => <FullTrip {...routerProps} user={user} />} />
       </Switch>
       

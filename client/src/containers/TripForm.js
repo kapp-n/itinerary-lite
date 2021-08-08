@@ -20,16 +20,17 @@ const TripForm = ({ addTrip }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const newTrip = {
+            locale: locale,
+            lodging: lodging,
+            category_id: category_id
+        }
         fetch('/trips', {
             method: "POST",
             headers: {
-                'Content-Type' : 'application/json'
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                locale: locale,
-                lodging: lodging,
-                category_id: category_id
-            })
+            body: JSON.stringify(newTrip)
         })
         .then(r => r.json())
 		.then(trip => {
@@ -49,7 +50,7 @@ const TripForm = ({ addTrip }) => {
     return (
         <div className="form_box">
              <h4 className="error">{error}</h4>
-            <p>First, enter a location (city, state, etc.) for your trip:</p>
+            <p>**First, enter a location (city, state, etc.) for your trip:</p>
             <form className="form" onSubmit={handleSubmit}>
                 <label id= "pin">📍 </label>
                 <input 

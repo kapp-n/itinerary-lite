@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import CategoryForm from './CategoryForm'
-import Trip  from '../components/Trip'
-import TripForm from './TripForm'
 
 
-const Categories = ({ user, onAdd }) => {
-    const [trips, setTrips] = useState([])
+
+const Categories = ({ user }) => {
+    const [categories, setCategories] = useState([])
     const [error, setError] = useState("")
     const [errors, setErrors] = useState([])
     const [categoryFormFlag, setCategoryFormFlag] = useState(false)
-    const [tripFormFlag, setTripFormFlag] = useState(false)
+    
     
 
     useEffect(() => {
-        fetch('/trips')
+        fetch('/categories')
         .then(r => r.json())
         .then(data =>{
             console.log(data)
             if(data.error){
                 setError(data.error)
             } else {
-                setTrips(data)
-                console.log(trips, "trips")
+                setCategories(data)
+                console.log(categories, "all categories")
             }
         })
     }, [])
 
-    const addTrip = (t) => {
-        setTrips([...trips, t])
-        setTripFormFlag(false)
-    }
+    // const addTrip = (t) => {
+    //     setTrips([...trips, t])
+    //     setTripFormFlag(false)
+    // }
 
     const addCategory = (c) => {
         console.log(c, 'c')
@@ -53,44 +52,41 @@ const Categories = ({ user, onAdd }) => {
         })
     }
 
-    const deleteCategory = (c) => {
-        fetch(`/categories/${c.id}`, {
-            method: "DELETE",
-        })
-        .then(r => {
-            if(r.ok) {
-                const newTrips = trips.filter(trip => trip.category.id !== c.id)
-                setTrips(newTrips)
-            }
-        })
-    }
-    
-    
+    // const deleteCategory = (c) => {
+    //     fetch(`/categories/${c.id}`, {
+    //         method: "DELETE",
+    //     })
+    //     .then(r => {
+    //         if(r.ok) {
+    //             const newTrips = trips.filter(trip => trip.category.id !== c.id)
+    //             setTrips(newTrips)
+    //         }
+    //     })
+    // }
 
-    const allTrips = trips.map(trip => <Trip key={trip.id} deleteCategory={deleteCategory} trip={trip} category={trip.category}  />)
+   
+   const catArray = categories.map(c => c.cname)
+   const uniqueArray = [...new Set(catArray)];
+    const myCategories = uniqueArray.map(c => <h1 id="category_name"> ⭐️ {c}</h1>)
 
     if (error === '') {
         return (
             <div className="trip_page">
                 <br/>
                 <br/>
-                <div>
-                    <h1 id="username">{user.username}'s trips</h1>
+                <p id="map">🗺</p>
+                    <h1 id="username">{user.username}'s itinerary</h1>
                     {categoryFormFlag ?
                         <CategoryForm addCategory={addCategory} errors={errors} />
                         :
-                        <button className="button" onClick={() => setCategoryFormFlag(true)}>Add a Category</button>
+                        <button className="add_cat_button" onClick={() => setCategoryFormFlag(true)}>Add a new category for your trips</button>
                     }
                     <br/>
                     <br/>
-                    {tripFormFlag ?
-                        <TripForm addTrip={addTrip}  />
-                        :
-                        <button className="button" onClick={() => setTripFormFlag(true)}>Start planning your new trip!</button>
-                    }
-                    <hr id="trip_hr"/>
-                    {allTrips}
-                </div>
+                    <hr/>
+                    <div id="all_cat">
+                    {myCategories}
+                    </div>
             </div>
         )
     } else {

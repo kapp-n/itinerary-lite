@@ -5,9 +5,9 @@ const NavBar = (props) => {
     if (props.loggedIn){
         return (
             <div className="nav">
-                <button className="nav" onClick={props.logOut}>Log out</button>
-                <Link to='/trips'>
-                    <button className="nav">My Trips</button>
+                <button className="nav1" onClick={props.logOut}>Log out</button>
+                <Link to='/categories'>
+                    <button className="nav2">My Trips</button>
                 </Link>
             </div>
         )
@@ -15,10 +15,10 @@ const NavBar = (props) => {
         return (
             <div className="nav">
                 <Link to='/signup'>
-                    <button className="nav">Sign Up</button>
+                    <button className="nav1">Sign Up</button>
                 </Link>
                 <Link to='/login'>
-                    <button className="nav">Login</button>
+                    <button className="nav2">Login</button>
                 </Link>
             </div>
         )

@@ -1,10 +1,11 @@
 * {
-  background-color: aliceblue;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: white;
+  color: black;
 }
 
 .App {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: aliceblue;
+  background-color: white;
 }
 
 .login{
@@ -29,17 +30,53 @@
 
 
 .nav {
-  border: #41BB92;
-  border-radius: 15px;
-  background-color: #72b4c5;
-  opacity: 90%;
-  color: whitesmoke;
-  width: 100px;
-  height: 30px;
+  display: flex;
 }
 
-.nav:hover{
-  background-color: orange;
+.nav1{
+  font-weight: 540;
+  font-size: 20px;
+  color: whitesmoke;
+  background-color: black;
+  height: 65px;
+  width: 90px;
+
+}
+
+.nav1:hover{
+  opacity: 80%;
+  font-style: oblique;
+}
+
+.nav2{
+  font-weight: 540;
+  font-size: 20px;
+  color: whitesmoke;
+  background-color: black;
+  height: 65px;
+  width: 90px;
+}
+
+.nav2:hover{
+  opacity: 80%;
+  font-style: oblique;
+}
+
+#category_name{
+  font-size: 70px;
+}
+
+#map{
+  font-size: 85px;
+  margin: 0;
+}
+
+#all_cat{
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ align-items: flex-start;
+ margin-left: 140px;
 }
 
 .home {
@@ -49,20 +86,49 @@
 
 .trip_page{
   text-align: center;
-  color: orange;
+  font-size: 25px;
 }
 
-.full_trip{
-  text-align: center;
-  color: orange;
+.add_cat_button{
+  border: none;
+  font-weight: 540;
+  font-size: 20px;
+  color: whitesmoke;
+  background-color: black;
+  height: 40px;
+  width: 320px;
 }
+
+.add_cat_button:hover{
+  background-color: yellowgreen;
+  border: none;
+}
+
+#add_cat{
+  margin-left: 600px;
+  display: flex;
+  align-items: center;
+  width: 200px ;
+  border: 8px double;
+  border-radius: 6px;
+}
+
+#add_cat:hover{
+  
+}
+
+
+#username{
+  margin-bottom: 20px;
+  text-decoration:overline;
+}
+
 
 hr {
-  border-style: solid;
-  border-radius: 10px;
-  border-color: orange;
-  border-width: 3px;
-  width: 200px;
+  background-color: black;
+  font-weight: bolder;
+  height: 4.5px;
+  width: 440px;
 }
 
 
@@ -77,6 +143,11 @@ hr {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.full_trip{
+  text-align: center;
+  color: orange;
 }
 
 .button {
@@ -97,6 +168,20 @@ hr {
   border:none;
   font-size: 15px;
   
+}
+#delete_button:hover{
+  cursor: pointer;
+}
+
+#delete_trip{
+  border:none;
+  display: flex;
+  align-items: center;
+  font-size: 5px;
+}
+
+#delete_trip:hover{
+  cursor: pointer;
 }
 
 a{
@@ -123,23 +208,24 @@ textarea{
 }
 
 .submit{
-  border: #41BB92;
-  border-radius: 15px;
-  background-color: #72b4c5;
+  margin-bottom: 10px;
+  border: black;
   opacity: 90%;
   color: whitesmoke;
+  background-color: black;
   width: 100px;
   height: 20px;
 }
 
 .submit:hover{
-  background-color: orange;
+  background-color: yellowgreen;
 }
 
 #trip_hr {
+  margin-top: 0px;
   border-style: solid;
   border-radius: 10px;
-  border-color: orange;
+  border-color: black;;
   border-width: 2px;
   width: 400px;
 }
