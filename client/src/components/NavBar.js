@@ -9,6 +9,9 @@ const NavBar = (props) => {
                 <Link to='/categories'>
                     <button className="nav2">My Trips</button>
                 </Link>
+                <Link to='/form'>
+                    <button className="nav3">Add New Trip</button>
+                </Link>
             </div>
         )
     } else {

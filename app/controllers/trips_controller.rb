@@ -18,15 +18,13 @@ class TripsController < ApplicationController
     end
 
     def create
-        #trip = Trip.create(trip_params)
-        user = User.find_by(id: session[:user_id])
-        trip = user.trips.create(trip_params)
-        #byebug
-        if trip.valid?
-            render json: trip
-        else
-            render json: { error: "Location cannot be blank" }, status: :unprocessable_entity
-        end
+       user = User.find_by(id: session[:user_id])
+       trip = user.trips.create(trip_params)
+       if trip.valid?
+        render json: trip, status: :created
+       else
+        render json: { error: "Location cannot be blank" }, status: :unprocessable_entity
+       end
     end
         
 

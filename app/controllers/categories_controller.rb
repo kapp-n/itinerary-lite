@@ -23,11 +23,12 @@ class CategoriesController < ApplicationController
     end
 
     def create
-        category = Category.create(category_params)
-        if category.valid?
-            render json: category, status: :created
+        category = Category.find_by(cname: category_params[:cname])
+        if category
+            render json: category
         else
-            render json: { errors: "There was an issue with your request, please make sure your category doesn't already exist when creating a trip" }, status: :unprocessable_entity
+            new_category = Category.create(category_params)
+            render json: new_category
         end
     end
 

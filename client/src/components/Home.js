@@ -5,7 +5,7 @@ const Home = (props) => {
         return (
             <div className="home">
                 <h1>Welcome back, {`${props.user.username}`}</h1>
-                <h4>Start planning now by clicking 'My Trips'</h4>
+                <h4>Start planning now by clicking 'Add new trip' or view your existing trips in 'My trips'</h4>
             </div>
         )
     } else {
