@@ -46,6 +46,7 @@
 .nav1:hover{
   opacity: 80%;
   font-style: oblique;
+  cursor: pointer;
 }
 
 .nav2{
@@ -60,6 +61,7 @@
 .nav2:hover{
   opacity: 80%;
   font-style: oblique;
+  cursor: pointer;
 }
 
 .nav3{
@@ -74,10 +76,15 @@
 .nav3:hover{
   opacity: 80%;
   font-style: oblique;
+  cursor: pointer;
 }
 
 #category_name{
   font-size: 70px;
+}
+
+#category_name:hover{
+  color: yellowgreen;
 }
 
 #map{
@@ -239,6 +246,7 @@
 
 #add_submit:hover{
   background-color: yellowgreen;
+  cursor: pointer;
 }
 
 #success_message{
@@ -260,6 +268,7 @@ hr {
   font-weight: bolder;
   height: 4.5px;
   width: 440px;
+  margin-bottom: 70px;
 }
 
 
@@ -316,11 +325,13 @@ hr {
 }
 
 a{
-  color: orange;
+  text-decoration: none;
 }
 
 a:hover{
-  color: tomato
+  color: yellowgreen;
+  cursor: pointer;
+  font-style: oblique;
 }
 
 

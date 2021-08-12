@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 
 
@@ -6,7 +7,7 @@ import React, { useState, useEffect } from 'react'
 const Categories = ({ user }) => {
     const [categories, setCategories] = useState([])
     const [error, setError] = useState("")
-    const [errors, setErrors] = useState([])
+    
     
     
 
@@ -40,9 +41,9 @@ const Categories = ({ user }) => {
     // }
 
    
-   const catArray = categories.map(c => c.cname)
-   const uniqueArray = [...new Set(catArray)]
-    const myCategories = uniqueArray.map(c => <h1 id="category_name"> ⭐️ {c}</h1>)
+
+   const uniqueArray = [...new Map(categories.map(item => [item['cname'], item])).values()]
+    const myCategories = uniqueArray.map(c => <Link to={`/categories/${c.id}/trips`}> <h1 id="category_name"> ⭐️ {c.cname}</h1></Link>)
 
     if (error === '') {
         return (
