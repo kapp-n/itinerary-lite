@@ -285,23 +285,20 @@ hr {
   flex-direction: column;
 }
 
-.full_trip{
-  text-align: center;
-  color: orange;
-}
 
 .button {
-  border: #41BB92;
-  border-radius: 15px;
-  background-color: #72b4c5;
-  opacity: 90%;
+  border: none;
+  background-color: black;
   color: whitesmoke;
-  width: 200px;
-  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 220px;
+  height: 60px;
+  margin-top: 0px;
 }
 
 .button:hover{
-  background-color: orange;
+  background-color:yellowgreen;
 }
 
 #full_category{
@@ -340,7 +337,7 @@ input {
   justify-content: center;
 }
 
-#select_trips{
+.select_trips{
   font-size: 30px;
   background-color: black;
   color: whitesmoke;
@@ -401,6 +398,67 @@ textarea{
   border-color: black;;
   border-width: 2px;
   width: 400px;
+}
+
+.full_trip{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#full_trip_hr{
+  margin-bottom: 0px;
+}
+
+#where{
+  font-size: 20px;
+}
+
+#full_lodging{
+  margin-left: 0px;
+  margin-top: 0px;
+  font-size: 18px;
+}
+
+#what{
+  font-size: 20px;
+}
+
+#full_things_to_see{
+  margin-left: 0px;
+  margin-top: 0px;
+  font-size: 18px;
+}
+
+#edit_trip{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+#edit_form{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;    
+  align-items: center;
+}
+
+.edit_label{
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.edit_input{
+  font-style: italic;
+  font-size: 19px;
+}
+
+#edit_text{
+  font-style: italic;
+  font-size: 18px;
 }
 
 .App-header {

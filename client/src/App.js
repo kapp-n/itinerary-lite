@@ -57,8 +57,8 @@ function App() {
         <Route exact path='/login' render={routerProps => <Login {...routerProps} onLogin={onLogin} />} />
         <Route exact path='/categories' render={routerProps => <Categories {...routerProps} user={user} />} />
         <Route exact path='/form' render={routerProps => <TripForm {...routerProps} user={user} loggedIn={loggedIn} />}/>
-        <Route path='/categories/:id/trips' render={routerProps => <FullCategory {...routerProps} loggedIn={loggedIn} user={user} />} />
-        <Route path='/trips/:id' render={routerProps => <FullTrip {...routerProps} user={user} loggedIn={loggedIn} />} />
+        <Route exact path='/categories/:id/trips' render={routerProps => <FullCategory {...routerProps} loggedIn={loggedIn} user={user} />} />
+        <Route path='/categories/:category_id/trips/:id' render={routerProps => <FullTrip {...routerProps} user={user} loggedIn={loggedIn} />} />
       </Switch>
       
     </div>

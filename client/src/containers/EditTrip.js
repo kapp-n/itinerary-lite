@@ -23,13 +23,14 @@ export default class EditTrip extends Component {
 
     render() {
         return (
-            <div className="form_box">
+            <div id="edit_trip">
                 {this.props.errors}
-                <form className="form" onSubmit={this.handleSubmit}>
+                <form id="edit_form" onSubmit={this.handleSubmit}>
                     <br/>
-                    <label>Where will you be going? </label>
+                    <label className="edit_label">Where will you be going? </label>
                     <br/>
                     <input 
+                        className="edit_input"
                         type="text" 
                         name="locale"
                         value={this.state.locale}
@@ -37,18 +38,20 @@ export default class EditTrip extends Component {
                     />
                     <br/>               
                     <br/>
-                    <label>Where are you staying?</label>
+                    <label className="edit_label">Where are you staying?</label>
                     <br/>
-                    <input                     
+                    <input  
+                        className="edit_input"
                         type="text"
                         name="lodging"
                         value={this.state.lodging}
                         onChange={this.handleChange}
                     />
                     <br/>
-                    <label for="things_to_see">What do you want to do or see while you're there:</label>
+                    <label className="edit_label" for="things_to_see">What do you want to do or see while you're there?</label>
                     <br/>
-                    <textarea 
+                    <textarea
+                    id="edit_text" 
                     name="things_to_see" 
                     rows="4" 
                     cols="50"

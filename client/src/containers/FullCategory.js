@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const FullCategory = (props) => {
     const [category, setCategory] = useState({})
     const [trips, setTrips] = useState([])
-    const history = useHistory()
     const [selectTrip, setSelectTrip] = useState({
         locale: "",
         id: null
@@ -27,7 +26,6 @@ const FullCategory = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(selectTrip)
-        history.push(`/trips/${selectTrip.id}`)
     }
 
 
@@ -35,11 +33,12 @@ const FullCategory = (props) => {
         console.log(e.target.value)
         setSelectTrip({
             locale: e.target.value,
-            id: e.target.id
+            id: e.target.options[e.target.selectedIndex].id
         })
     }
 
-
+    
+    
     const allTrips = trips.map(trip => <option value={trip.locale} id={trip.id}>📍 {trip.locale}</option>)
 
 
@@ -52,10 +51,14 @@ const FullCategory = (props) => {
                 <hr id="trips_hr"/>
                 <br/>
                 <form id="select_form" onSubmit={handleSubmit}>
-                    <select name="trips" id="select_trips" onChange={handleChange}>
+                    <select name="trips" className="select_trips" onChange={handleChange}>
                       {allTrips}
                     </select>
-                     <input id="trip_submit" type="submit" value="Go"/>
+                    <Link to={{
+                        pathname: `/categories/${category.id}/trips/${selectTrip.id}`,
+                    }}>
+                        <input id="trip_submit" type="submit" value="Go"/>
+                    </Link>
                 </form>
             </div>
             )
