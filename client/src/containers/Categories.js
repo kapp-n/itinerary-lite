@@ -28,17 +28,6 @@ const Categories = ({ user }) => {
 
 
 
-    // const deleteCategory = (c) => {
-    //     fetch(`/categories/${c.id}`, {
-    //         method: "DELETE",
-    //     })
-    //     .then(r => {
-    //         if(r.ok) {
-    //             const newTrips = trips.filter(trip => trip.category.id !== c.id)
-    //             setTrips(newTrips)
-    //         }
-    //     })
-    // }
 
    
 

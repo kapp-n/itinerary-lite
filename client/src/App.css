@@ -113,19 +113,35 @@
 #form_error{
   text-align: center;
   color: tomato;
-  padding-left: 185px;
   margin-bottom: 0px;
+  margin-top: 0px;
   
 }
 
-.add_cat_button{
+#add_cat_select{
+  font-size: 15px;
+  background-color: black;
+  color: whitesmoke;
+  width: 140px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+#add_cat_submit{
+  text-align:center;
   border: none;
   font-weight: 540;
   font-size: 20px;
   color: whitesmoke;
   background-color: black;
-  height: 40px;
-  width: 320px;
+  height: 90px;
+  width: 140px;
+  padding-bottom: 5px;
+}
+
+#add_cat_submit:hover{
+  cursor: pointer;
+  background-color: yellowgreen;
 }
 
 .add_cat_button:hover{
@@ -135,17 +151,18 @@
 
 #add_cat{
   margin-left: 500px;
-  margin-top: 70px;
-  display: flex;
-  align-items: center;
-  width: 400px;
-  height: 220px;
-  border: 8px double;
-  border-radius: 6px;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-content: stretch;
-  justify-content: space-evenly;
+    margin-top: 70px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    width: 400px;
+    height: 260px;
+    border: 8px double;
+    border-radius: 6px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: flex-start;
 }
 
 #add_cat label{
@@ -153,10 +170,13 @@
   width: 340px;
   font-weight: bolder;
   font-size: 18px;
+  margin-top: 10px;
 }
 
 #add_cat input{
   font-size: 17px;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 .add_trip{
@@ -165,40 +185,42 @@
   flex-direction: column;
 }
 
-#add_trip_form{
+#add_trip_div{
   border: double black;
   border-width: 10px;
   margin-top: 40px;
-  padding-bottom: 25px;
-  height: 360px;
-  width: 500px;
-  padding-left: 30px;
-  padding-right: 120px;
+  height: 560px;
+  width: 630px;
+  /* padding-left: 30px;
+  padding-right: 120px; */
   display: flex;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
   align-content: center;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 
-#pin{
-  margin-left: 174px;
-  font-size: 20px;
+#add_trip_form{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
-#pin_label{
-  font-size: 14px;
+#add_trip_hr{
+  margin-bottom: 50px;
+  width: 180px;
 }
 
 #lodging_label{
-  margin-left: 175px;
+  /* margin-left: 175px; */
   font-size: 19px;
   font-weight: bold;
 }
 
 #lodging{
-  margin-left: 190px;
+  /* margin-left: 190px; */
   margin-top: 10px;
   font-size: 15px;
 }
@@ -206,29 +228,30 @@
 #p{
   font-size: 16px;
   font-weight: bolder;
-  margin-left: 75px;
+  /* margin-left: 115px; */
   margin-bottom: 8px;
 }
 
 #category_trip_form{
   text-align: center;
   margin-top: 0px;
-  margin-left: 220px;
-  padding-bottom: 20px;
+  margin-bottom: 0px;
+  /* margin-left: 120px; */
+  padding-bottom: 0px;
   font-size: 45px;
 }
 
 #add_things_label{
   font-weight: bold;
   font-size: 17px;
-  margin-left: 165px;
+  /* margin-left: 165px; */
 }
 
 #add_things{
   border-style: solid;
   border-color: black;
   font-size: 12px;
-  margin-left: 140px;
+  /* margin-left: 140px; */
   margin-top: 10px;
 }
 
@@ -240,7 +263,7 @@
   background-color: black;
   height: 40px;
   width: 320px;
-  margin-left: 140px;
+  /* margin-left: 140px; */
   margin-top: 30px;
 }
 
@@ -252,7 +275,7 @@
 #success_message{
   font-size: 16px;
   text-align: center;
-  margin-left: 100px;
+  /* margin-left: 100px; */
   color: rgb(91, 133, 9);
 }
 

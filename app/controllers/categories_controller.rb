@@ -7,12 +7,6 @@ class CategoriesController < ApplicationController
         render json: categories, include: :trips
     end
 
-    def show 
-        user = User.find_by(id: session[:user_id])
-        category = user.categories.find_by(id: params[:id])
-        render json: category, include: :trips
-    end
-
     def destroy
         user = User.find_by(id: session[:user_id])
         categories = user.categories
@@ -28,7 +22,11 @@ class CategoriesController < ApplicationController
             render json: category
         else
             new_category = Category.create(category_params)
-            render json: new_category
+            if new_category.valid?
+                render json: new_category
+            else
+                render json: { error: "Must enter or select a category" }, status: :unprocessable_entity
+            end
         end
     end
 

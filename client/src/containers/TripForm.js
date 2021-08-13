@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 const TripForm = ({ loggedIn }) => {
-    const [successMessage, setSuccessMessage] = useState("")
     const [error, setError] = useState("")
     const [trip, setTrip] = useState({
         locale: "",
@@ -13,9 +13,17 @@ const TripForm = ({ loggedIn }) => {
         cname: "",
         id: null
     })
+    const [categories, setCategories] = useState([])
     const [formFlag, setFormFlag] = useState(false)
+    const history = useHistory()
 
-   
+   useEffect(() => {
+       fetch('/categories/form')
+       .then(r => r.json())
+       .then(data =>{
+           setCategories(data)
+       })
+   }, [])
 
 
     const handleCatSubmit = (e) => {
@@ -29,9 +37,14 @@ const TripForm = ({ loggedIn }) => {
         })
         .then(r => r.json())
         .then(data => {
-            console.log(data)
-            setCategory(data)
-            setFormFlag(true)
+            if(data.error){
+                setError(data.error)
+            } else {
+                console.log(data)
+                setCategory(data)
+                setError("")
+                setFormFlag(true)
+            }
         })
     }
 
@@ -42,16 +55,17 @@ const TripForm = ({ loggedIn }) => {
             })
         } else {
             setTrip({
+                ...trip,
                 [e.target.name]: e.target.value
             })
+            console.log(trip)
         }
     }
 
 
-
-
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log(trip)
         const newTrip = {
             locale: trip.locale,
             lodging: trip.lodging,
@@ -73,34 +87,42 @@ const TripForm = ({ loggedIn }) => {
 				setError(trip.error)
 			} else {
                 setError("")
-				setSuccessMessage("Your trip has been created! If you wish to view your trip, use the navigation above")
+				history.push('/categories')
 			}
         })
     }
+
+    const allCategories = categories.map(c => <option value={c.cname}>{c.cname}</option>)
+
 
     if(loggedIn){
         if(!formFlag){
             return (
                     <form id="add_cat" onSubmit={handleCatSubmit}>
-                        <label>First, let's add a category for your trip. This can be 
-                            an existing category in your itinerary or a new one</label>
+                        <h4 id="form_error">{error}</h4>
+                        <label>First, let's add a category for your trip. Please select from a list of existing categories, or, 
+                            if none of these are what you're looking for, you may create your own.</label>
                             <input 
                                 type="text"
                                 name="cname"
                                 onChange={handleChange}
                             />
-                            <input className="submit" type="submit" />
+                            <select name="cname" id="add_cat_select" onChange={handleChange}>
+                                <option value="none" selected disabled hidden>Select Category</option>
+                                {allCategories}
+                            </select>
+                            <input id="add_cat_submit" type="submit" />
                     </form>
             )
         } else {
             return (
                 <div className="add_trip">
-                    <div id="add_trip_form">
+                    <div id="add_trip_div">
                         <h2 id="category_trip_form">{category.cname}</h2>
+                        <hr id="add_trip_hr"/>
                         <h4 id="form_error">{error}</h4>
-                        <p id="p">First, enter a location (city, state, etc.) for your trip:</p>
-                        <form onSubmit={handleSubmit}>
-                            <label id= "pin">📍 </label>
+                        <form id="add_trip_form" onSubmit={handleSubmit}>
+                            <label id= "p"> First, enter a location (city, state, etc.) for your trip:</label>
                             <input
                                 id="pin_label"
                                 size="26" 
@@ -133,8 +155,8 @@ const TripForm = ({ loggedIn }) => {
                             <br/>
                             <input id="add_submit" type="submit" value="Add to Itinerary!" />
                             </form>
-                            <h2 id="success_message">{successMessage}</h2>
                     </div>
+                    
                 </div>
             )
         }
