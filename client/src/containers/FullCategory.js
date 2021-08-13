@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 const FullCategory = (props) => {
     const [category, setCategory] = useState({})
@@ -8,6 +8,7 @@ const FullCategory = (props) => {
         locale: "",
         id: null
     })
+    const history = useHistory()
 
     useEffect(() => {
         fetch(`/categories/${props.match.params.id}/trips`)
@@ -37,6 +38,18 @@ const FullCategory = (props) => {
         })
     }
 
+    const handleDelete = () => {
+        fetch(`/categories/${category.id}`, {
+            method: "DELETE",
+        })
+        .then(r => {
+            if(r.ok) {
+                history.push('/categories')
+            }
+        })
+    }
+
+
     
     
     const allTrips = trips.map(trip => <option value={trip.locale} id={trip.id}>📍 {trip.locale}</option>)
@@ -45,9 +58,13 @@ const FullCategory = (props) => {
 
     if(props.loggedIn){
         return (
-            <div>
+            <div id="full_cat_div">
                 <h1 id="full_category">{category.cname}</h1>
-                <p id="trip_p">Pick a trip below to view it's details</p>
+                <hr id="cats_hr"/>
+                <p className="trip_p">Pick a trip below to view it's details</p>
+                <br/>
+                <p className="trip_p">Or, you can delete this category from your itinerary (this will include its trips)</p>
+                <button id="cat_delete_button" onClick={handleDelete}>Delete</button>
                 <hr id="trips_hr"/>
                 <br/>
                 <form id="select_form" onSubmit={handleSubmit}>

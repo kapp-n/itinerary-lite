@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import EditTrip from './EditTrip'
 
 const FullTrip = (props) => {
@@ -7,6 +8,7 @@ const FullTrip = (props) => {
     const [errors, setErrors] = useState([])
     const [error, setError] = useState("")
     const [formFlag, setFormFlag] = useState(false)
+    const history = useHistory()
 
     useEffect(() => {
         fetch(`/categories/${props.match.params.category_id}/trips/${props.match.params.id}`)
@@ -44,6 +46,17 @@ const FullTrip = (props) => {
         })
     }
 
+    const deleteTrip = () => {
+        fetch(`/categories/${category}/trips/${trip.id}`,{
+            method: "DELETE"
+        })
+        .then(r => {
+            if(r.ok){
+                history.push(`/categories`)
+            }
+        })
+    }
+
 
    
     if(formFlag){
@@ -60,10 +73,11 @@ const FullTrip = (props) => {
                 <h5 id="what">What do you want to do or see while you're there?</h5>                    
                 <p id="full_things_to_see">{trip.things_to_see}</p>
                 <hr className="trip_hr"/>
-                <button className="button" onClick={() => setFormFlag(true)}>Edit/add to your trip</button>
-                {/* <p>|</p>
-                <button onClick={deleteTrip} className="button">Delete this trip</button> */}
+                <div id="full_buttons">
+                    <button className="button" onClick={() => setFormFlag(true)}>Edit/add to your trip</button>
+                    <button onClick={deleteTrip} className="button">Delete this trip</button>
                 </div>
+            </div>
         )
     } else {
         return(

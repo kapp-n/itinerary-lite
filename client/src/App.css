@@ -367,8 +367,33 @@ input {
   cursor: pointer;
 }
 
-#trip_p{
-  margin-left: 590px
+.trip_p{
+  margin-top: 0;
+  text-align: center;
+  width: 400px
+}
+
+#cat_delete_button{
+  width: 85px;
+  border:none;
+  font-size: 19px;
+  margin-bottom: 20px;
+  background-color: black;
+  color: whitesmoke;
+}
+
+#cat_delete_button:hover{
+  background-color: yellowgreen;
+  cursor: pointer;
+}
+
+#full_cat_div{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 
 textarea{
@@ -398,6 +423,14 @@ textarea{
   border-color: black;;
   border-width: 2px;
   width: 400px;
+}
+
+#cats_hr{
+  background-color: black;
+  font-weight: bolder;
+  height: 4.5px;
+  width: 440px;
+  margin-bottom: 30px;
 }
 
 .full_trip{
@@ -431,6 +464,16 @@ textarea{
   margin-top: 0px;
   font-size: 18px;
 }
+
+#full_buttons{
+  display: flex;
+}
+
+#full_buttons button{
+  margin-right: 5px;
+}
+
+
 
 #edit_trip{
   display: flex;
