@@ -304,25 +304,16 @@ hr {
   background-color: orange;
 }
 
-#delete_button{
-  border:none;
-  font-size: 15px;
-  
-}
-#delete_button:hover{
-  cursor: pointer;
-}
-
-#delete_trip{
-  border:none;
+#full_category{
   display: flex;
+  margin-bottom: 15px;
+  font-size: 65px;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
   align-items: center;
-  font-size: 5px;
 }
 
-#delete_trip:hover{
-  cursor: pointer;
-}
 
 a{
   text-decoration: none;
@@ -338,6 +329,49 @@ a:hover{
 input {
   border-radius: 10px;
   border-style: solid
+}
+
+#select_form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+}
+
+#select_trips{
+  font-size: 30px;
+  background-color: black;
+  color: whitesmoke;
+  width: 250px;
+  margin-top: 0px;
+}
+
+#select_trips:hover{
+  cursor: pointer;
+}
+
+#trips_hr{
+  margin-bottom: 0px;
+}
+
+#trip_submit{
+  border: none;
+  border-radius: 0px;
+  background-color: black;
+  color: whitesmoke;
+  margin-top: 10px;
+  font-size: 22px;
+}
+
+#trip_submit:hover{
+  background-color: yellowgreen;
+  cursor: pointer;
+}
+
+#trip_p{
+  margin-left: 590px
 }
 
 textarea{

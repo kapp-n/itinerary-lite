@@ -8,6 +8,7 @@ import Categories from './containers/Categories'
 import FullTrip  from './containers/FullTrip'
 import './App.css';
 import TripForm from './containers/TripForm'
+import FullCategory from './containers/FullCategory'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -55,8 +56,9 @@ function App() {
         <Route exact path='/signup' render={routerProps => <Signup {...routerProps} onLogin={onLogin} />} />
         <Route exact path='/login' render={routerProps => <Login {...routerProps} onLogin={onLogin} />} />
         <Route exact path='/categories' render={routerProps => <Categories {...routerProps} user={user} />} />
-        <Route exact path='/form' render={routerProps => <TripForm {...routerProps} user={user} loggedIn={loggedIn} />} />
-        <Route path='/trips/:id' render={routerProps => <FullTrip {...routerProps} user={user} />} />
+        <Route exact path='/form' render={routerProps => <TripForm {...routerProps} user={user} loggedIn={loggedIn} />}/>
+        <Route path='/categories/:id/trips' render={routerProps => <FullCategory {...routerProps} loggedIn={loggedIn} user={user} />} />
+        <Route path='/trips/:id' render={routerProps => <FullTrip {...routerProps} user={user} loggedIn={loggedIn} />} />
       </Switch>
       
     </div>

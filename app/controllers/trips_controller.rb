@@ -4,7 +4,9 @@ class TripsController < ApplicationController
     def index
         user = User.find_by(id: session[:user_id])
         trips = user.trips
-        render json: trips, include: :category
+        category = user.categories.find_by(id: params[:category_id])
+        new_trips = trips.select { |trip| trip.category_id == category.id }
+        render json: new_trips, include: :category
     end
 
     def show
