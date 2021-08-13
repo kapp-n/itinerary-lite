@@ -32,11 +32,12 @@ const Signup = ({ onLogin }) => {
         })
     }
 
-
+    const allErrors = errors.map(e => <h3 className="signup_errors">{e}</h3>)
+    
     return (
         <div>
-            <div className="errors">
-                {errors}
+            <div id="signup_error_div">
+                {allErrors}
             </div>
         <form className="login" onSubmit={handleSubmit}>
 			<label>Username </label>

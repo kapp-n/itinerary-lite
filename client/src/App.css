@@ -12,20 +12,37 @@
   text-align: center;
 }
 
-.error{
-  color: tomato;
-  text-align: center;
-  font-weight: bolder;
-  padding-top: 20px;
-  padding-left: 20px;
+#login_error{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
-.errors{
+#login_error h2{
   color: tomato;
   text-align: center;
   font-weight: bolder;
-  padding-top: 20px;
-  padding-left: 20px;
+}
+
+.signup_errors{
+  color: tomato;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.signup_errors h5{
+  color: tomato;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bolder;
+  margin: 0px;
+}
+
+#signup_error_div{
+  display: flex;
+  flex-direction: column;
 }
 
 

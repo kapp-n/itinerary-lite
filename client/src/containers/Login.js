@@ -33,8 +33,8 @@ const Login = ({ onLogin }) => {
 
     return (
 		<div>
-            <div className="errors">
-                {error}
+            <div id="login_error">
+                <h2>{error}</h2>
             </div>
         <form className="login" onSubmit={handleSubmit}>
 			<label>Username </label>
